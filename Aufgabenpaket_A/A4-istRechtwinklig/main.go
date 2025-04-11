@@ -33,3 +33,5 @@ func main() {
 		fmt.Printf("Ein Dreieck mit den Seitenlängen %d, %d und %d ist%s rechtwinklig.\n", a, b, c, negation)
 	}
 }
+
+
