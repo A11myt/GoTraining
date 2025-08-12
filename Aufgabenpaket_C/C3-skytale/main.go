@@ -61,3 +61,6 @@ func main() {
 		fmt.Println("Durchmesser:", d, lesbarer(decrypt(geheim, d)))
 	}
 }
+
+
+

@@ -5,6 +5,13 @@ package main
 // der Durchmesser des Stabes in Buchstaben.
 // scytale muss eine natürliche Zahl sein.
 func encrypt(klartext string, scytale int) string {
+	// scytale ist die Länge des Stabes in Buchstaben.
+	//count auf 0 setzen, um die Anzahl der Buchstaben zu zählen
+	if scytale < 2 {
+		return "Der Durchmesser muss größer als 1 sein."
+	}
+	// Hier sollte die Logik für die Verschlüsselung mit dem Scytale-Verfahren implementiert werden.
+
 	return "quatsch"
 }
 
