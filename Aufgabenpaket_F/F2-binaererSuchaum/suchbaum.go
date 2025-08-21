@@ -91,7 +91,15 @@ func summeDesBaums(wurzel *knoten) int {
 // Liefert die Höhe des Baums zurück.
 func höheDesBaums(wurzel *knoten) int {
 	// todo: Implementieren Sie den Rumpf der Funktion
-	return -1
+	if wurzel == nil {
+		return 0
+	}
+	linksHöhe := höheDesBaums(wurzel.links)
+	rechtsHöhe := höheDesBaums(wurzel.rechts)
+	if linksHöhe > rechtsHöhe {
+		return linksHöhe + 1
+	}
+	return rechtsHöhe + 1
 }
 
 // Liefert einen Zeiger auf den Knoten zurück,
@@ -100,7 +108,13 @@ func höheDesBaums(wurzel *knoten) int {
 // die bereits einen Wert enthält (d.h. wurzel darf nicht nil sein).
 func kleinsterKnoten(wurzel *knoten) *knoten {
 	// todo: Implementieren Sie den Rumpf der Funktion
-	return nil
+	if wurzel == nil {
+		return nil	
+	}
+	for wurzel.links != nil {
+		wurzel = wurzel.links
+	}
+	return wurzel
 }
 
 // Sucht in einem Suchbaum nach dem Wert suchwert
@@ -111,10 +125,26 @@ func kleinsterKnoten(wurzel *knoten) *knoten {
 // des entsprechenden Knotens zurückgeliefert, ansonsten -1.
 func höheDesWerts(wurzel *knoten, suchwert int, höhe int) int {
 	// todo: Implementieren Sie den Rumpf der Funktion
-	return -1
+	if wurzel == nil {
+		return -1
+	}
+	if wurzel.wert == suchwert {
+		return höhe
+	}
+	if suchwert < wurzel.wert {
+		return höheDesWerts(wurzel.links, suchwert, höhe+1)
+	} else {
+		return höheDesWerts(wurzel.rechts, suchwert, höhe+1)
+	}
 }
 
 // Erhöht jeden Wert im Baum um den Wert 1.
 func inkrementiereAlleWerte(wurzel *knoten) {
+	if wurzel == nil {
+		return
+	}
+	wurzel.wert += 1
+	inkrementiereAlleWerte(wurzel.links)
+	inkrementiereAlleWerte(wurzel.rechts)
 	// todo: Implementieren Sie den Rumpf der Funktion
 }
